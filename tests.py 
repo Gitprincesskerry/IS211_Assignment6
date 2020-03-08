@@ -1,0 +1,9 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# This is Kerry Rainford's Week 6 Assignment, Test file
+
+import unitest
+
+test that the paramter = Float
+True
+Negative number
