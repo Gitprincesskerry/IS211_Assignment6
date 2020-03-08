@@ -3,7 +3,12 @@
 # This is Kerry Rainford's Week 6 Assignment, Test file
 
 import unitest
+import convertKelvinToCelsius
 
-test that the paramter = Float
-True
-Negative number
+class Temperature_Kerry(unitest.TestCase):
+    def test_convertKelvinToCelsius(self):
+        result =
+
+
+#test that the paramter = Float
+#-2, 0, -3, 2+5j, True, "radius"
