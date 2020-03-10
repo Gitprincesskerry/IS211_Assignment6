@@ -85,19 +85,18 @@ Returns:
     Temperature in Celsius.
 
 Examples:
-    >>> convertFahrenheitToCelsius(90)
-    '104.4'
+    >>> convertFahrenheitToCelsius(90.0)
+    '32.22222248'
 
-    >>> convertFahrenheitToCelsius(95)
-    '113.4'
+    >>> convertFahrenheitToCelsius(95.0)
+    '35.0'
     """
 
     # if type(d) not in [float]:
     #     raise TypeError("Input must be a float")
 
-    ftc = (d-32) * 1.8
+    ftc = (d-32) * (.55555556)
     return (ftc)
-
 
 # Kelvin_To_Fahrenheit
 def convertKelvinToFahrenheit(e=float):
@@ -136,14 +135,14 @@ Returns:
 
 Examples:
     >>> convertFahrenheitToKelvin(92.0)
-    ' 381.15'
+    '306.4833336'
 
     >>> convertFahrenheitToKelvin(85.5)
-    ' 369.45'
+    '302.87222246'
     """
 
-    ftk = (f-32) * 1.8 + 273.15
-    return (ftk)
+    ftk = (f-32) * .55555556 + 273.15
+    return(ftk)
 
 #Conversion between miles, yards, and meters
 
