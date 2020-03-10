@@ -14,16 +14,79 @@ class Temperature_Kerry(unittest.TestCase):
         self.assertRaises(TypeError, conversions.convertKelvinToCelsius(True))
         self.assertRaises(TypeError, conversions.convertKelvinToCelsius, "newstring")
 
+    def test_convertCelsiusToKelvin(self):
+        self.assertEqual(conversions.convertCelsiusToKelvin(12.0), 285.15)
+        self.assertEqual(conversions.convertCelsiusToKelvin(0), 273.15)
+        self.assertEqual(conversions.convertCelsiusToKelvin(-273.15), 0.0)
+        self.assertRaises(TypeError, conversions.convertCelsiusToKelvin(True))
+        self.assertRaises(TypeError, conversions.convertKelvinToCelsius, "newstring")
+
+    def test_convertCelsiusToFahrenheit(self):
+        self.assertEqual(conversions.convertCelsiusToFahrenheit(12.0), 53.6)
+        self.assertEqual(conversions.convertCelsiusToFahrenheit(0), 32.0)
+        self.assertAlmostEqual(conversions.convertCelsiusToFahrenheit(-273.15), -459.67)
+        self.assertRaises(TypeError, conversions.convertCelsiusToFahrenheit(True))
+        self.assertRaises(TypeError, conversions.convertCelsiusToFahrenheit, "newstring")
+
+    def test_convertFahrenheitToCelsius(self):
+        self.assertAlmostEqual(conversions.convertFahrenheitToCelsius(95.0), 35.000000279999995)
+        self.assertEqual(conversions.convertFahrenheitToCelsius(0), -17.77777792)
+        self.assertEqual(conversions.convertFahrenheitToCelsius(-273.15),  -169.52777913399999)
+        self.assertRaises(TypeError, conversions.convertFahrenheitToCelsius(True))
+        self.assertRaises(TypeError, conversions.convertFahrenheitToCelsius, "newstring")
+
+    def test_convertKelvinToFahrenheit(self):
+        self.assertEqual(conversions.convertKelvinToFahrenheit(12.0), -438.07)
+        self.assertAlmostEqual(conversions.convertKelvinToFahrenheit(0), -459.67)
+        self.assertAlmostEqual(conversions.convertKelvinToFahrenheit(-273.15), -951.34)
+        self.assertRaises(TypeError, conversions.convertKelvinToFahrenheit(True))
+        self.assertRaises(TypeError, conversions.convertKelvinToFahrenheit, "newstring")
+
+    def test_convertFahrenheitToKelvin(self):
+        self.assertAlmostEqual(conversions.convertFahrenheitToKelvin(92.0), 306.4833336)
+        self.assertEqual(conversions.convertFahrenheitToKelvin(0), 255.37222207999997)
+        self.assertEqual(conversions.convertFahrenheitToKelvin(85.5), 302.87222246)
+        self.assertRaises(TypeError, conversions.convertFahrenheitToKelvin(True))
+        self.assertRaises(TypeError, conversions.convertFahrenheitToKelvin, "newstring")
+
+# Test for Part IV ­ Refactor
     def test_convert(self):
         self.assertEqual(convert("Kelvin", "Celsius", 12.0), -261.15)
         self.assertEqual(convert("Celsius", "Kelvin", 0), 273.15)
+        self.assertEqual(convert("Celsius", "Fahrenheit", 0), 32.0)
+        self.assertEqual(convert("Fahrenheit", "Celsius", 64.4), 18.000000144)
+        self.assertAlmostEqual(convert("Kelvin", "Fahrenheit", 257.039), 3.0002000)
+        self.assertAlmostEqual(convert("Fahrenheit", "Kelvin", 3.0002000), 257.038999871)
+
+        self.assertEqual(convert("Miles", "Yards", 1.0), 1760.0)
+        self.assertAlmostEqual(convert("Yards", "Miles", 8800.0), 5.0)
+        self.assertEqual(convert("Miles", "Meters", 1.0), 1609.34)
+        self.assertEqual(convert("Meters", "Miles", 1609.34), 1.0)
+        self.assertAlmostEqual(convert("Yards", "Meters", 1), 0.914076782)
+        self.assertAlmostEqual(convert("Meters", "Yards", 2), 2.188)
+
         with self.assertRaises(ConversionNotPossible): convert("Celsius", "Meters", 0)
-        #self.assertRaises(ConversionNotPossible, convert("Celsius", "Meters", 0))
-        # self.assertEqual(conversions.convertKelvinToCelsius(-273.15), -546.30)
-        # self.assertRaises(TypeError, conversions.convertKelvinToCelsius(True))
-        # self.assertRaises(TypeError, conversions.convertKelvinToCelsius, "newstring")
+        with self.assertRaises(ConversionNotPossible): convert("Celsius", "Yards", 0)
+        with self.assertRaises(ConversionNotPossible): convert("Celsius", "Miles", 0)
+        with self.assertRaises(ConversionNotPossible): convert("Kelvin", "Meters", 0)
+        with self.assertRaises(ConversionNotPossible): convert("Kelvin", "Yards", 0)
+        with self.assertRaises(ConversionNotPossible): convert("Kelvin", "Miles", 0)
+        with self.assertRaises(ConversionNotPossible): convert("Fahrenheit", "Meters", 0)
+        with self.assertRaises(ConversionNotPossible): convert("Fahrenheit", "Yards", 0)
+        with self.assertRaises(ConversionNotPossible): convert("Fahrenheit", "Miles", 0)
+        with self.assertRaises(ConversionNotPossible): convert("Meters", "Celsius", 0)
+        with self.assertRaises(ConversionNotPossible): convert("Meters", "Kelvin", 0)
+        with self.assertRaises(ConversionNotPossible): convert("Meters", "Fahrenheit", 0)
+        with self.assertRaises(ConversionNotPossible): convert("Miles", "Celsius", 0)
+        with self.assertRaises(ConversionNotPossible): convert("Miles", "Kelvin", 0)
+        with self.assertRaises(ConversionNotPossible): convert("Miles", "Fahrenheit", 0)
+        with self.assertRaises(ConversionNotPossible): convert("Yards", "Celsius", 0)
+        with self.assertRaises(ConversionNotPossible): convert("Yards", "Kelvin", 0)
+        with self.assertRaises(ConversionNotPossible): convert("Yards", "Fahrenheit", 0)
 
-
+        self.assertEqual(conversions.convertKelvinToCelsius(-273.15), -546.30)
+        self.assertRaises(TypeError, conversions.convertKelvinToCelsius(True))
+        self.assertRaises(TypeError, conversions.convertKelvinToCelsius, "newstring")
 
 if __name__ == "__main__":
     unittest.main()
