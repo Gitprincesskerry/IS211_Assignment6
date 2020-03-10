@@ -17,11 +17,11 @@ def convert(fromUnit, toUnit, value):
         elif fromUnit == "Celsius" and toUnit == "Fahrenheit":
             result = (value*1.8) + 32
         elif fromUnit == "Fahrenheit" and toUnit == "Celsius":
-            result = (value-32) * (5/9)
+            result = (value-32) * (.55555556)
         elif fromUnit == "Kelvin" and toUnit == "Fahrenheit":
             result = (value-273.15) * 1.8 + 32
         elif fromUnit == "Fahrenheit" and toUnit == "Kelvin":
-            result = (value-32) * (5/9) + 273.15
+            result = (value-32) * .55555556 + 273.15
         elif fromUnit == "Miles" and toUnit == "Yards":
             result = value * 1760.0
         elif fromUnit == "Yards" and toUnit == "Miles":
